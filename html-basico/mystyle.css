@@ -16,6 +16,16 @@
     animation-iteration-count: infinite;
 }
 
+.btn{
+  font-size: 10px;
+  width: 200px;
+  height: 50px;
+  background-color: blueviolet;
+  animation-name: transition;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
 @keyframes rotation {
     from {
       transform: rotate(0deg);
@@ -25,8 +35,13 @@
     }
   }
 
-.img{
+.img2{
     animation:bounce 5s linear 100;
+}
+
+.img{
+  width: 4000px;
+  height: 720px;
 }
 
 

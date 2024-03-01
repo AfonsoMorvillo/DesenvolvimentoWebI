@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.center {
+	display: flex;
+	flex-direction: column;
+}	
+
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
