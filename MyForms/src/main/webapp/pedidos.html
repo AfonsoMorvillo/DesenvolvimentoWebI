@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Pedidos</h1>
+
+    <form action="pedido" method="post">
+
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome"> <br>
+
+        <label for="email">E-mail: </label>
+        <input type="email" name="email" id="email"> <br>
+
+        <label for="quantidade">Quantidade: </label>
+        <input type="number" name="quantidade" id="quantidade"><br>
+
+        Prefiro pagar com:
+        <input type="radio" name="forma-pagamento" id="forma-pagamento-cartao" value="cartao">
+        <label for="forma-pagamento-cartao">Cartão de crédito</label>
+
+        <input type="radio" name="forma-pagamento" id="forma-pagamento-pix" value="pix">
+        <label for="forma-pagamento-pix">PIX</label>
+
+        <br>
+		Aceito receber promoções por:
+        <input type="checkbox" name="promocoes" id="promo-email" value="email">
+        <label for="promo-email">E-mail</label>
+        
+        <input type="checkbox" name="promocoes" id="promo-wa" value="wa">
+        <label for="promo-wa">WhatsApp</label>
+
+        <input type="checkbox" name="promocoes" id="promo-sms" value="sms">
+        <label for="promo-sms">SMS</label>
+
+
+
+        <br>
+        <input type="submit" value="Enviar">
+
+       
+    </form>
+
+</body>
+
+</html>

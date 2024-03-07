@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
+import ifsp.edu.br.data.Produto;
+
 /**
  * Servlet implementation class produto
  */
@@ -32,7 +34,7 @@ public class produto extends HttpServlet {
 
 		response.setContentType("text/html; charset=utf-8");
 
-		final List<Produto> produtos = criaProdutos();
+		final List<Produto> produtos = Produto.criaProdutos();
 
 		writer.println("<!DOCTYPE html>");
 		writer.println("<html>");
@@ -42,23 +44,7 @@ public class produto extends HttpServlet {
 		writer.println("</head>");
 		writer.println("<body>");
 
-
-		List<Produto> produtosEncontrados = new ArrayList<>();
-
-		if (request.getParameter("chave") != null) {
-			Integer chaveProduto = Integer.parseInt(request.getParameter("chave"));
-
-			produtosEncontrados = produtos.stream().filter(prod -> prod.getCodigo() == chaveProduto)
-					.collect(Collectors.toList());
-		} else {
-			String descricaoProduto = request.getParameter("busca");
-			
-			if (request.getParameter("busca") == null) {
-				descricaoProduto = "";
-			}
-			
-			produtosEncontrados = buscaProduto(produtos, descricaoProduto);
-		}
+		List<Produto> produtosEncontrados = getProdutos(request, produtos);
 
 		writer.println("<table border=\"1\">");
 
@@ -85,18 +71,24 @@ public class produto extends HttpServlet {
 
 	}
 
-	private List<Produto> buscaProduto(final List<Produto> produtos, String descricaoProduto) {
-		List<Produto> produtosEncontrados;
-		produtosEncontrados = produtos.stream().filter(prod -> prod.getDescricao().contains(descricaoProduto))
-				.collect(Collectors.toList());
+	private List<Produto> getProdutos(HttpServletRequest request, final List<Produto> produtos) {
+		List<Produto> produtosEncontrados = new ArrayList<>();
+
+		if (request.getParameter("chave") != null) {
+			Integer chaveProduto = Integer.parseInt(request.getParameter("chave"));
+
+			produtosEncontrados = produtos.stream().filter(prod -> prod.getCodigo() == chaveProduto)
+					.collect(Collectors.toList());
+		} else {
+			String descricaoProduto = request.getParameter("busca");
+
+			if (request.getParameter("busca") == null) {
+				descricaoProduto = "";
+			}
+
+			produtosEncontrados = Produto.buscaProduto(produtos, descricaoProduto);
+		}
 		return produtosEncontrados;
-	}
-
-	private List<Produto> criaProdutos() {
-		return List.of(new Produto(1, "Teclado 104 teclas", 104), new Produto(2, "SSD Kingston 1 TB", 437),
-				new Produto(3, "Pen drive 16 GB", 40.70), new Produto(4, "Processador AMD", 790),
-				new Produto(5, "Gabinete Corsair", 530));
-
 	}
 
 }

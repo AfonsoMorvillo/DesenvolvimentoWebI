@@ -1,4 +1,7 @@
-package ifsp.edu.br;
+package ifsp.edu.br.data;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Produto {
 	private int codigo;
@@ -33,6 +36,18 @@ public class Produto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public static List<Produto> criaProdutos() {
+		return List.of(new Produto(1, "Teclado 104 teclas", 104), new Produto(2, "SSD Kingston 1 TB", 437),
+				new Produto(3, "Pen drive 16 GB", 40.70), new Produto(4, "Processador AMD", 790),
+				new Produto(5, "Gabinete Corsair", 530));
+
+	}
+	
+	public static List<Produto> buscaProduto(final List<Produto> produtos, String descricaoProduto) {
+		return produtos.stream().filter(prod -> prod.getDescricao().contains(descricaoProduto))
+				.collect(Collectors.toList());
 	}
 
 }
