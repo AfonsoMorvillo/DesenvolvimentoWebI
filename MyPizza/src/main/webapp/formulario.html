@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pizzaria</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	
+	<h1>Pedido</h1>
+	<div class="formulario">
+	<form action="pizza" method="post">
+
+	Tamanho:
+	<input type="radio" name="tamanho" id="tamanho-p" value="p">
+	<label for="tamanho-p">Pequeno</label>
+	<input type="radio" name="tamanho" id="tamanho-m" value="m">
+	<label for="tamanho-m">Médio</label>
+	<input type="radio" name="tamanho" id="tamanho-g" value="g">
+	<label for="tamanho-g">Grande</label>
+
+	<br>
+	Sabores: 
+	<input type="checkbox" name="sabor" id="calabresa" value="calabresa">
+	<label for="calabresa">Calabresa</label>
+	<input type="checkbox" name="sabor" id="presunto" value="presunto">
+	<label for="presunto">Presunto</label>
+	<input type="checkbox" name="sabor" id="queijo" value="queijo">
+	<label for="queijo">Queijo</label>
+	<input type="checkbox" name="sabor" id="frango" value="frango">
+	<label for="frango">Frango</label>
+	<input type="checkbox" name="sabor" id="mortadela" value="mortadela">
+	<label for="mortadela">Mortadela</label>
+	<input type="checkbox" name="sabor" id="chocolate" value="chocolate">
+	<label for="chocolate">Chocolate</label>
+	<br>
+
+	<h2>
+	Dados pessoais:
+	</h2>
+	
+	<label for="nome">Nome: </label>
+	<input type="text" name="nome" id="nome" minlength="3" required><br>
+
+	<label for="telefone">Telefone: </label>
+	<input type="text" name="telefone" id="telefone" placeholder="(99)99999-9999"><br>
+
+	<label for="endereco">Endereço: </label>
+	<input type="text" name="endereco" id="endereco" required><br>
+
+
+
+	<button type="submit" value="submit" >Enviar</button>
+
+</form>
+	</div>
+</body>
+</html>

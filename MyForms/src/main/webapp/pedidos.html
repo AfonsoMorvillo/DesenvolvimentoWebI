@@ -1,53 +1,50 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Pedidos</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <h1>Pedidos</h1>
+<h1>Pedidos</h1>
 
-    <form action="pedido" method="post">
+<form action="pedido" method="post">
 
-        <label for="nome">Nome: </label>
-        <input type="text" name="nome" id="nome"> <br>
+	<label for="nome">Nome: </label>
+	<input type="text" name="nome" id="nome" required="required" minlength="3"><br>
 
-        <label for="email">E-mail: </label>
-        <input type="email" name="email" id="email"> <br>
+	<label for="email">E-mail: </label>
+	<input type="email" name="email" id="email" placeholder="usario@exemplo.com"><br>
+	
+	<label for="cpf">CPF: </label>
+	<input name="cpf" id="cpf" placeholder="999.999.999-99" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"><br>
 
-        <label for="quantidade">Quantidade: </label>
-        <input type="number" name="quantidade" id="quantidade"><br>
+	<label for="quantidade">Quantidade: </label>
+	<input type="number" name="quantidade" id="quantidade" min="1"><br>
 
-        Prefiro pagar com:
-        <input type="radio" name="forma-pagamento" id="forma-pagamento-cartao" value="cartao">
-        <label for="forma-pagamento-cartao">Cartão de crédito</label>
+	Prefiro pagar com:
+	<input type="radio" name="forma-pagamento" id="forma-pagamento-cartao" value="cartao">
+	<label for="forma-pagamento-cartao">Cartão de crédito</label>
 
-        <input type="radio" name="forma-pagamento" id="forma-pagamento-pix" value="pix">
-        <label for="forma-pagamento-pix">PIX</label>
+	<input type="radio" name="forma-pagamento" id="forma-pagamento-pix" value="pix">
+	<label for="forma-pagamento-pix">Pix</label><br>
 
-        <br>
-		Aceito receber promoções por:
-        <input type="checkbox" name="promocoes" id="promo-email" value="email">
-        <label for="promo-email">E-mail</label>
-        
-        <input type="checkbox" name="promocoes" id="promo-wa" value="wa">
-        <label for="promo-wa">WhatsApp</label>
+	Aceito receber promoções por:
+	<input type="checkbox" name="promocoes" id="promo-email" value="e-mail">
+	<label for="promo-email">E-mail</label>
 
-        <input type="checkbox" name="promocoes" id="promo-sms" value="sms">
-        <label for="promo-sms">SMS</label>
+	<input type="checkbox" name="promocoes" id="promo-wa" value="wa">
+	<label for="promo-wa">WhatsApp</label>
+	
+	<input type="checkbox" name="promocoes" id="promo-sms" value="sms">
+	<label for="promo-sms">SMS</label><br>
+	
 
+	<br>
+	<button type="submit" value="submit">Enviar</button>
 
-
-        <br>
-        <input type="submit" value="Enviar">
-
-       
-    </form>
+</form>
 
 </body>
-
 </html>
