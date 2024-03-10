@@ -1,0 +1,14 @@
+	Sabores:
+		<input type="checkbox" name="sabor" id="calabresa" value="calabresa">
+		<label for="calabresa">Calabresa</label>
+		<input type="checkbox" name="sabor" id="presunto" value="presunto">
+		<label for="presunto">Presunto</label>
+		<input type="checkbox" name="sabor" id="queijo" value="queijo">
+		<label for="queijo">Queijo</label>
+		<input type="checkbox" name="sabor" id="frango" value="frango">
+		<label for="frango">Frango</label>
+		<input type="checkbox" name="sabor" id="mortadela" value="mortadela">
+		<label for="mortadela">Mortadela</label>
+		<input type="checkbox" name="sabor" id="chocolate" value="chocolate">
+		<label for="chocolate">Chocolate</label>
+		<br>
