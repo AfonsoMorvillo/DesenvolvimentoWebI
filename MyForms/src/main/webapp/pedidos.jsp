@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="edu.ifsp.pizzaria.FormaContato" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,15 +35,16 @@
 	<label for="forma-pagamento-pix">Pix</label><br>
 
 	Aceito receber promoções por:
-	<input type="checkbox" name="promocoes" id="promo-email" value="e-mail">
-	<label for="promo-email">E-mail</label>
 
-	<input type="checkbox" name="promocoes" id="promo-wa" value="wa">
-	<label for="promo-wa">WhatsApp</label>
-	
-	<input type="checkbox" name="promocoes" id="promo-sms" value="sms">
-	<label for="promo-sms">SMS</label><br>
-	
+	<%
+	List<FormaContato> formasContato = (List<FormaContato>) request.getAttribute( "formasContato" );
+	for(FormaContato forma : formasContato){
+	%>
+		<input type="checkbox" name="promocoes" id="promo-<%= forma.getValor() %>" value="<%= forma.getValor() %>">
+		<label for="promo-<%= forma.getValor() %>"><%=forma.getDescricao() %></label>
+	<%
+	}
+	%>
 
 	<br>
 	<button type="submit" value="submit">Enviar</button>
