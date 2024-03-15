@@ -1,6 +1,7 @@
 package edu.ifsp.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,41 +14,65 @@ import javax.servlet.http.HttpServletResponse;
 import edu.ifsp.pizzaria.FormaContato;
 import edu.ifsp.pizzaria.persistencia.FormaContatoDAO;
 
-@WebServlet("/pedido")
+@WebServlet( "/pedido" )
 public class PedidoServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+   private static final long serialVersionUID = 1L;
+
+   @Override
+   protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+
       List<FormaContato> formasContato = FormaContatoDAO.findAll();
-		
-		request.setAttribute( "formasContato", formasContato );
+
+      request.setAttribute( "formasContato", formasContato );
+
+      RequestDispatcher rd = request.getRequestDispatcher( "pedidos.jsp" );
+      rd.forward( request, response );
+   }
+
+
+   protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+
+
+      boolean isValid = validar( request );
+      RequestDispatcher rd = null;
       
-      RequestDispatcher rd = request.getRequestDispatcher("pedidos.jsp");
-		rd.forward(request, response);
-	}
-       
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setContentType("text/plain");
-//		
-//		final PrintWriter out = response.getWriter();
-//		
-//		out.println("Dados recebidos");
-//		out.append("Nome: ").println(request.getParameter("nome"));		
-//		out.append("E-mail: ").println(request.getParameter("email"));
-//		out.append("CPF: ").println(request.getParameter("cpf"));
-//		out.append("Quantidade: ").println(request.getParameter("quantidade"));
-//		out.append("Forma de pagamento: ").println(request.getParameter("forma-pagamento"));
-//		
-//		String[] promocoes = request.getParameterValues("promocoes");
-//		out.println("Aceita mensagens de promoções por:");
-//		if (promocoes != null) {
-//			for (String promo : promocoes) {
-//				out.println(promo);
-//			}		
-//		}
-//		
-//	}
+      if (isValid) {
+         request.setAttribute( "pedido", "437912" );
+         
+          rd = request.getRequestDispatcher( "confirmacao.jsp" );
+      }else {
+         List<FormaContato> formasContato = FormaContatoDAO.findAll();
+
+         request.setAttribute( "formasContato", formasContato );
+         rd = request.getRequestDispatcher( "pedido.jsp" );
+      }
+
+      rd.forward( request, response );
+   }
+
+
+   private boolean validar( HttpServletRequest request ) {
+      boolean res = true;
+      try{
+         int quantidade = Integer.parseInt( request.getParameter( "quantidade" ) );
+         if( quantidade < 1 ){
+            res = false;
+         }
+         request.setAttribute( "erro-quantidade", "O valor mínimo para a quantidade 1" );
+      }
+      catch( NumberFormatException e ){
+         res = false;
+         request.setAttribute( "erro-quantidade", "Não é um formato númerico válido!" );
+      }
+      
+   String formaPagamento =  request.getParameter( "forma-pagamento" );
+    formaPagamento =  "erro";
+      
+      if (!(formaPagamento.equals( "pix" ) || formaPagamento.equals( "cartao" ))) {
+         res = false;
+         request.setAttribute( "erro-forma", "Forma de pagamento é obrigátorio!" );
+      }
+      return res;
+   }
 
 }

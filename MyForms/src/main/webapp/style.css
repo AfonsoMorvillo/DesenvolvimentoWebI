@@ -1,8 +1,44 @@
-input[type=email]{
-    background-color: yellow;
-
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-input[type=email]:focus{
-    background-color: red;
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+}
+
+.container{
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+}
+
+.form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 3rem;
+}
+
+.form-header{
+    width: 100%;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
