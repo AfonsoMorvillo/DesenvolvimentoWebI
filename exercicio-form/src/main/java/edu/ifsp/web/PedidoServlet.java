@@ -72,7 +72,6 @@ public class PedidoServlet extends HttpServlet {
       }
       
       String formaPagamento =  request.getParameter( "forma-pagamento" );
-      formaPagamento =  "erro";
         
         if (!(formaPagamento.equals( "pix" ) || formaPagamento.equals( "cartao" ))) {
            res = false;
