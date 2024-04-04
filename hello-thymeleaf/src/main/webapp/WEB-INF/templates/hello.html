@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p>Olá, <span th:text="${usuario}">Desconhecido</span></p>
+
+	<table border="1">
+		<tr>
+			<th>Produto</th>
+			<th>Preço</th>
+		</tr>
+	
+		<tr th:each="prod: ${produtos}">
+			<td th:text="${prod.descricao}"></td>
+			<td th:text="${prod.preco}"></td>
+		</tr>
+	</table>
+
+</body>
+</html>
