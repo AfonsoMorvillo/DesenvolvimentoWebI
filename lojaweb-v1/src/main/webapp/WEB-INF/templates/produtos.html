@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Produtos</title>
+</head>
+<body>
+<h1>Produtos</h1>
+
+<table border="1">
+	<tr>
+		<th>Código</th>
+		<th>Descrição</th>
+		<th>Preço</th>
+	</tr>
+	
+	<tr th:each="prod: ${produtos}">
+		<td th:text="${prod.id}">1</td>
+		<td th:text="${prod.descricao}">Papel sulfite (teste)</td>
+		<td th:text="${prod.preco}">0.00</td>
+	</tr>
+</table>
+
+</body>
+</html>
+
+
+
+
