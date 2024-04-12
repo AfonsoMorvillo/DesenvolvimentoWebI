@@ -3,22 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    input[type="number"],
+    input[type="text"],
+    button {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .input-group{
+        margin-bottom: 15px;
+    }
+
+    .error {
+        color: red;
+        display: block; /* Tornando-o um bloco para que ocupe uma linha separada */
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
 </head>
 <body>
 
-<form action="salvar" method="post">
-    <label for="preco">Preço</label>
-    <input name="preco" type="number" id="preco" required>
+    <div class="container">
+        <form action="salvar" method="post">
+            <div class="input-group">
 
-    <br>
-    <label for="descricao">Descrição</label>
-    <input name="descricao"  type="text" id="descricao" required>
-
-    <br>
-    <button type="submit" value="submit">Salvar</button>	
-
-
-</form>
+                <label for="preco">Preço</label>
+                <input name="preco" type="number" id="preco" required>
+                <span class="error">erro</span>
+            </div>
+    
+            <div class="input-group">
+                
+                <label for="descricao">Descrição</label>
+                <input name="descricao"  type="text" id="descricao" required>
+                <span class="error">erro</span>
+                
+            </div>
+            <button type="submit" value="submit">Salvar</button>
+        </form>
+    </div>
 	
 
 
