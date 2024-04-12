@@ -43,12 +43,42 @@ public class ProdutoDAO {
 			psmt.setString(1, produto.getDescricao());
 			psmt.setDouble(2, produto.getPreco());
 
-			return psmt.executeUpdate();
+		   int affectedRows = psmt.executeUpdate();
+
+		    if (affectedRows == 0) {
+		        throw new SQLException("Inserção falhou, nenhuma linha afetada.");
+		    }
+
+		    try (ResultSet generatedKeys = psmt.getGeneratedKeys()) {
+		        if (generatedKeys.next()) {
+		            long idGerado = generatedKeys.getLong(1);
+		            return (int)idGerado;
+		        } else {
+		            throw new SQLException("Nenhuma chave gerada retornada.");
+		        }
+		    }
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public int editarProduto (Produto produto) {
+	   try (Connection conn = DatabaseConnector.getConnection()) {
+
+         String update = "update produto set descricao = ? preco = ? where id = ?";
+         PreparedStatement psmt = conn.prepareStatement(update);
+         psmt.setString(1, produto.getDescricao());
+         psmt.setDouble(2, produto.getPreco());
+         psmt.setDouble(3, produto.getId());
+       
+         return psmt.executeUpdate();
+
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
+      return -1;
 	}
 
 }

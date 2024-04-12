@@ -65,8 +65,8 @@
             <div class="input-group">
 
                 <label for="preco">Preço</label>
-                <input name="preco" type="number" id="preco" required>
-                <span class="error">erro</span>
+                <input name="preco" type="number" id="preco" min="0" step=".01" required>
+                <span th:if="${erroPreco}" class="error">erro</span>
             </div>
     
             <div class="input-group">

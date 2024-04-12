@@ -24,6 +24,8 @@ public class formularioProduto extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//	   request.setAttribute( "erroPreco", true );
+	   request.getParameter("id");
 		TemplateHelper.render("formularioProduto", request, response);
 			
 	}
@@ -38,8 +40,10 @@ public class formularioProduto extends HttpServlet {
 			
 			ProdutoDAO produtoDAO =  new ProdutoDAO();
 			
-			produtoDAO.salvarProduto(p);
+			int key = produtoDAO.salvarProduto(p);
+			System.out.println( key );
 			
+		   request.setAttribute( "erro-preco", "O preço deve ser maior que 1." );
 			enviaTelaProdutos(request, response);
 		}else {
 			TemplateHelper.render("formularioProduto", request, response);
