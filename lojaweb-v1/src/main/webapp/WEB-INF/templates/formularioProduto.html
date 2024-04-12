@@ -45,7 +45,7 @@
         display: block; /* Tornando-o um bloco para que ocupe uma linha separada */
     }
 
-    button {
+    .adicionar {
         background-color: #007bff;
         color: #fff;
         font-size: 16px;
@@ -53,32 +53,43 @@
         transition: background-color 0.3s ease;
     }
 
-    button:hover {
+    .adicionar:hover {
         background-color: #0056b3;
+    }
+    
+     .excluir {
+    	margin-top: 10px;
+        background-color: red;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .excluir:hover {
+        background-color: rgb(237, 51, 59);
     }
 </style>
 </head>
 <body>
 
-    <div class="container">
-        <form action="salvar" method="post">
-            <div class="input-group">
+<div class="container">
+    <form action="salvar" method="post">
+        <div class="input-group">
+            <label for="preco">Preço</label>
+            <input name="preco" type="number" id="preco" min="0" step=".01" required th:value="${produto.preco}">
+            <span th:if="${erroPreco}" class="error" th:text="${erroPreco}"></span>
+        </div>
+        <div class="input-group">
+            <label for="descricao">Descrição</label>
+            <input name="descricao"  type="text" id="descricao" required th:value="${produto.descricao}">
+            <span  th:if="${erroDescricao}" class="error" th:text="${erroDescricao}"></span>
+        </div>
+        <button class= "adicionar" type="submit" value="submit">Salvar</button>
+        <button th:if="${edicao}" class="excluir" type="submit" value="excluir" name="excluir">Excluir</button>
+    </form>
+</div>
 
-                <label for="preco">Preço</label>
-                <input name="preco" type="number" id="preco" min="0" step=".01" required>
-                <span th:if="${erroPreco}" class="error">erro</span>
-            </div>
-    
-            <div class="input-group">
-                
-                <label for="descricao">Descrição</label>
-                <input name="descricao"  type="text" id="descricao" required>
-                <span class="error">erro</span>
-                
-            </div>
-            <button type="submit" value="submit">Salvar</button>
-        </form>
-    </div>
 	
 
 

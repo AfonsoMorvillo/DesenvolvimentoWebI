@@ -67,11 +67,11 @@ public class ProdutoDAO {
 	public int editarProduto (Produto produto) {
 	   try (Connection conn = DatabaseConnector.getConnection()) {
 
-         String update = "update produto set descricao = ? preco = ? where id = ?";
+         String update = "update produto set descricao = ? , preco = ? where id = ?";
          PreparedStatement psmt = conn.prepareStatement(update);
          psmt.setString(1, produto.getDescricao());
          psmt.setDouble(2, produto.getPreco());
-         psmt.setDouble(3, produto.getId());
+         psmt.setInt(3, produto.getId());
        
          return psmt.executeUpdate();
 
@@ -84,10 +84,10 @@ public class ProdutoDAO {
 	
 	public int  excluirProdutos (Produto produto) {
 		try (Connection conn = DatabaseConnector.getConnection()){
-			  String delete = "delete produto  where id = ?";
+			  String delete = "delete from produto where id = ?";
 		         PreparedStatement psmt = conn.prepareStatement(delete);
 		         psmt.setInt(1, produto.getId());
-		         psmt.execute();
+		         psmt.executeUpdate();
 		         return 0 ;
 			
 		} catch(SQLException e) {
@@ -98,12 +98,12 @@ public class ProdutoDAO {
 	
 	public Produto findProduto(Produto produto) throws PersistenceException {
 		try (Connection conn = DatabaseConnector.getConnection()) {
-			String consulta = "select descricao, preco from produto where id = ?";
+			String consulta = "select descricao, preco, id from produto where id = ?";
 			PreparedStatement psmt = conn.prepareStatement(consulta);
 			psmt.setInt(1, produto.getId());
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
-			 return	new Produto(rs.getString("descricao"),rs.getDouble("preco"));
+			 return	new Produto(rs.getInt( "id" ),rs.getString("descricao"),rs.getDouble("preco"));
 			}
 		}
 		 catch (SQLException e) {

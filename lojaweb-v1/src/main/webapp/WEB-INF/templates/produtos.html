@@ -5,9 +5,15 @@
 <title>Produtos</title>
 </head>
 <body>
+
+<h1 th:if="${chaveProduto != null}" th:text="'Chave Produto: ' + ${chaveProduto}"></h1>
+	 
 <h1>Produtos</h1>
 
 <table border="1">
+		
+	
+
 	<tr>
 		<th>Código</th>
 		<th>Descrição</th>
