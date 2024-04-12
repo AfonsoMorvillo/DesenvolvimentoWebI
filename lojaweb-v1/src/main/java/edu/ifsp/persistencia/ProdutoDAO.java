@@ -80,5 +80,36 @@ public class ProdutoDAO {
       }
       return -1;
 	}
+	
+	
+	public int  excluirProdutos (Produto produto) {
+		try (Connection conn = DatabaseConnector.getConnection()){
+			  String delete = "delete produto  where id = ?";
+		         PreparedStatement psmt = conn.prepareStatement(delete);
+		         psmt.setInt(1, produto.getId());
+		         psmt.execute();
+		         return 0 ;
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public Produto findProduto(Produto produto) throws PersistenceException {
+		try (Connection conn = DatabaseConnector.getConnection()) {
+			String consulta = "select descricao, preco from produto where id = ?";
+			PreparedStatement psmt = conn.prepareStatement(consulta);
+			psmt.setInt(1, produto.getId());
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+			 return	new Produto(rs.getString("descricao"),rs.getDouble("preco"));
+			}
+		}
+		 catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+		return produto = null;
+	}
 
 }
