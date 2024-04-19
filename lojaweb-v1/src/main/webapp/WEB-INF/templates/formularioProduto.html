@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -42,6 +42,7 @@
 
     .error {
         color: red;
+        font-size: 0.7rem;
         display: block; /* Tornando-o um bloco para que ocupe uma linha separada */
     }
 
@@ -75,15 +76,22 @@
 
 <div class="container">
     <form action="salvar" method="post">
+    
+    
         <div class="input-group">
+        
             <label for="preco">Preço</label>
             <input name="preco" type="number" id="preco" min="0" step=".01" required th:value="${produto.preco}">
             <span th:if="${erroPreco}" class="error" th:text="${erroPreco}"></span>
+            
         </div>
+        
         <div class="input-group">
+        
             <label for="descricao">Descrição</label>
             <input name="descricao"  type="text" id="descricao" required th:value="${produto.descricao}">
             <span  th:if="${erroDescricao}" class="error" th:text="${erroDescricao}"></span>
+            
         </div>
         <button class= "adicionar" type="submit" value="submit">Salvar</button>
         <button th:if="${edicao}" class="excluir" type="submit" value="excluir" name="excluir">Excluir</button>

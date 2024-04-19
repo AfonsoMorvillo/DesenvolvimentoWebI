@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Produtos</title>
 </head>
 <body>
@@ -18,12 +19,20 @@
 		<th>Código</th>
 		<th>Descrição</th>
 		<th>Preço</th>
+		<th><a th:href="@{|salvar|}">
+	            <i class="fa fa-plus"></i>
+	        </a> </th>
 	</tr>
 	
 	<tr th:each="prod: ${produtos}">
 		<td th:text="${prod.id}">1</td>
 		<td th:text="${prod.descricao}">Papel sulfite (teste)</td>
 		<td th:text="${prod.preco}">0.00</td>
+		<td>
+	       <a th:href="@{|salvar?id=${prod.id}|}">
+	            <i class="fa fa-pencil"></i>
+	        </a>
+    	</td>
 	</tr>
 </table>
 

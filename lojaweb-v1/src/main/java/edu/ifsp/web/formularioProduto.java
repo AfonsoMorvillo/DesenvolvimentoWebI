@@ -94,6 +94,7 @@ public class formularioProduto extends HttpServlet {
           request.setAttribute( "erroDescricao", "Descrição é obrigátorio!" );
         }else {
            aux.setDescricao( descricao );
+           aux.setId( produto.getId() );
            produto = aux;
         }
 	      
