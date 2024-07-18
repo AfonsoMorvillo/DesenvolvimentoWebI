@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cliente</title>
+</head>
+<body>
+	<h1>Cliente</h1>
+
+	<p>
+		<label>Código: </label> <span th:text="${cliente.id}"></span>
+	</p>
+
+	<p>
+		<label for="nome">Nome: </label> <span th:text="${cliente.nome}"></span>
+	</p>
+
+	<p>
+		<label for="email">E-mail: </label> <span
+			th:text="${cliente.email}"></span>
+	</p>
+	<p>
+		<label for="logradouro">Logradouro: </label><span
+			th:text="${cliente.logradouro}"></span>
+	</p>
+	<p>
+		<label for="bairro">Bairro: </label> <span
+			th:text="${cliente.bairro}"></span>
+	</p>
+	<p>
+		<label for="cidade">Cidade: </label> <span
+			th:text="${cliente.cidade}"></span>
+	</p>
+	<p>
+		<label for="estado">Estado: </label> <span
+			th:text="${cliente.estado}"></span>
+	</p>
+	<p>
+		<label for="cep">CEP: </label> <span th:text="${cliente.cep}"></span>
+	</p>
+
+
+</body>
+</html>
+
+
+
+

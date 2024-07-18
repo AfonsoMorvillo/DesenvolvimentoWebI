@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Cliente</title>
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body>
+
+	<div class="container">
+
+		<form method="post">
+
+			<p>
+				<label>Código: </label> <span th:if="${cliente.isNew()}">NOVO</span>
+				<span th:unless="${cliente.isNew()}" th:text="${cliente.id}"></span>
+			</p>
+
+			<p>
+				<label for="nome">Nome: </label> <input type="text" name="nome"
+					id="nome" th:value="${cliente.nome}" required>
+			</p>
+
+			<p>
+				<label for="email">E-mail: </label> <input type="text" name="email"
+					id="email" th:value="${cliente.email}" required>
+			</p>
+
+			<p>
+				<label for="logradouro">Logradouro: </label> <input type="text"
+					name="logradouro" id="logradouro" th:value="${cliente.logradouro}"
+					required>
+			</p>
+
+			<p>
+				<label for="bairro">Bairro: </label> <input type="text"
+					name="bairro" id="bairro" th:value="${cliente.bairro}" required>
+			</p>
+
+			<p>
+				<label for="cidade">Cidade: </label> <input type="text"
+					name="cidade" id="cidade" th:value="${cliente.cidade}" required>
+			</p>
+			<p>
+				<label for="estado">Estado: </label> <input type="text"
+					name="estado" id="estado" th:value="${cliente.estado}" required
+					maxlength="2">
+			</p>
+			<p>
+				<label for="cep">CEP: </label> <input type="text" name="cep"
+					id="cep" th:value="${cliente.cep}" required maxlength="8">
+			</p>
+
+			<p th:if="${cliente.isNew()}">
+				<label for="password">Senha: </label> <input type="password"
+					name="password" id="password" th:value="${cliente.password}"
+					required>
+			</p>
+
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
+</body>
+</html>
