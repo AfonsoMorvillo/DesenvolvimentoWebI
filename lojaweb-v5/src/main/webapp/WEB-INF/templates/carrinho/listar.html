@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Carrinho</title>
+<link rel="stylesheet" th:href="@{/css/common.css}">
+
+</head>
+<body>
+	<h1>Carrinho</h1>
+	<h3>
+		Quantidade de itens: <span th:text="${carrinho.size}">teste</span>
+	</h3>
+
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Código</th>
+				<th scope="col">Descrição</th>
+				<th scope="col">Preço</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="item: ${carrinho}">
+				<td th:text="${item.produto.id}">1</td>
+				<td th:text="${item.produto.descricao}">Papel sulfite (teste)</td>
+				<td th:text="${#numbers.formatCurrency(item.produto.preco)}"
+					class="monetario">0.00</td>
+				<td><span class="operacao"><a
+						th:href="|carrinho/remover?id=${item.id}|">Remover</a></span></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th scope="row" colspan="2">Valor total</th>
+				<td th:text="${#numbers.formatCurrency(valorTotal)}"
+					class="monetario">0.00</td>
+				<td><span class="operacao"><a
+						th:href="|carrinho/esvaziar|">Esvaziar</a></span></td>
+			</tr>
+		</tfoot>
+	</table>
+
+</body>
+</html>
+
+
+
+
